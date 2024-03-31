@@ -14,9 +14,18 @@ public class BlasterMovement : MonoBehaviour
     [SerializeField] float speedIncrease = 5f;
     [SerializeField] float projectileTime = 0.5f;
 
+    public static BlasterMovement singleton;
 
     public bool isFirerate = false;
     // Start is called before the first frame update
+
+    void Awake(){
+        if(singleton != null){
+            Destroy(this.gameObject);
+        }
+        singleton = this;
+    }
+
     void Start()
     {
     }
@@ -45,8 +54,8 @@ public class BlasterMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)){
             shootProjectile();
             if(isFirerate == true){
-            //shootProjectile1();
-            Debug.Log("isActive is true!");
+            shootProjectile1();
+            //Debug.Log("isActive is true!");
             }
         }
 
@@ -64,6 +73,8 @@ public class BlasterMovement : MonoBehaviour
         Destroy(newProjectile, projectileTime);
     }
 
-
+    public void ActivateDoubleFirerate(){
+        isFirerate = true;
+    }
 
 }

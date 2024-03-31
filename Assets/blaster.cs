@@ -35,7 +35,7 @@ public class blaster : MonoBehaviour
     }
 
      public void Move(Vector3 direction){
-        transform.position += direction * speed * Time.deltaTime;
+        rb.transform.position += direction * speed * Time.deltaTime;
         //rigidbodyMovement(direction);
     }
 
@@ -60,7 +60,8 @@ public class blaster : MonoBehaviour
     public void DoubleFireratePickup(){
         Debug.Log("Double Firerate picked!");
         FirerateCounter.singleton.IsFirerateOn();
-        isActive = true;
+        BlasterMovement.singleton.ActivateDoubleFirerate();
+        //isActive = true;
 
         // GameObject newProjectile = Instantiate(bullet, transform.position, Quaternion.identity);
         // newProjectile.GetComponent<Rigidbody2D>().velocity = newProjectile.transform.up * speed;

@@ -5,15 +5,23 @@ using UnityEngine;
 public class enemy : MonoBehaviour
 {   
 
-    void Start(){
-        disableSpawn();
+    public void OnTriggerEnter2D(Collider2D other){
+        if(other.gameObject.name == "Blaster"){
+            HealthCounter.singleton.LoseHealth();
+            Destroy(this.gameObject);
+        }
     }
 
-    public void disableSpawn(){
-         GetComponent<enemySpawner>().enabled = false;
-    }
-    // Start is called before the first frame update
-    public void callSpawn(){
-        GetComponent<enemySpawner>().enabled = true;
-    }
+
+    // void Start(){
+    //     disableSpawn();
+    // }
+
+    // public void disableSpawn(){
+    //      GetComponent<enemySpawner>().enabled = false;
+    // }
+    // // Start is called before the first frame update
+    // public void callSpawn(){
+    //     GetComponent<enemySpawner>().enabled = true;
+    // }
 }
