@@ -35,8 +35,9 @@ public class blaster : MonoBehaviour
     }
 
      public void Move(Vector3 direction){
-        rb.transform.position += direction * speed * Time.deltaTime;
-        //rigidbodyMovement(direction);
+       Vector3 currentVelocity = new Vector3(0, 0, 0);
+
+       rb.velocity = (currentVelocity) + (direction * speed);
     }
 
     /*public void rigidbodyMovement(Vector3 direction){
@@ -44,18 +45,6 @@ public class blaster : MonoBehaviour
         rb.velocity = (currentVelocity) + (speed * direction);
     }*/
 
-    public void SpeedPickup(){
-        //  if(speed <= 30){
-        //     speed += speedIncrease;
-        //     SpeedCounter.singleton.speedCounterScore();
-        //     Debug.Log("Speed increase!");
-        //  }
-        // else {
-        //     Debug.Log("Speed spawner is disabled");
-        //     speed += 0;
-        //     return;
-        // }
-    }
 
     public void DoubleFireratePickup(){
         Debug.Log("Double Firerate picked!");

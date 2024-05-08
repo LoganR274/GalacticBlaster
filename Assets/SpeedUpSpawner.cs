@@ -4,30 +4,23 @@ using UnityEngine;
 
 public class SpeedUpSpawner : MonoBehaviour
 {
-    [SerializeField]  GameObject enemyPrefab;
-    [SerializeField]  float spawnRange = 4;
+    [SerializeField]  GameObject SpeedUpPrefab;
+    [SerializeField] float ItemSpeed = 0;
+    [SerializeField] float ItemLifeSpan = 0;
 
-    void Start()
-    {
-        speedSpawn();
+    //public bool isActivated = true;
+
+    public static SpeedUpSpawner singleton;
+
+    void Awake(){
+        if(singleton != null){
+            Destroy(this.gameObject);
+        }
+        singleton = this;
     }
 
-   public void speedSpawn(){
-        StartCoroutine (spawnSpeedRoutine());
-        IEnumerator spawnSpeedRoutine(){
-            while (true){
-                yield return new WaitForSeconds(3);
-                spawnSpeedRandom();
-            }
-        }
-   }
-
    public void spawnSpeedRandom(){
-        float randomX = Random.Range(-spawnRange, spawnRange);
-        float randomY = Random.Range(-spawnRange, spawnRange);
-
-        GameObject newEnemy = Instantiate(enemyPrefab, new Vector3(randomX, randomY, 0), Quaternion.identity);
-        Destroy(newEnemy, 3);
-        newEnemy.transform.eulerAngles = new Vector3(0,0,0);
+        GameObject newSpeedUp =  Instantiate(SpeedUpPrefab, transform.position, Quaternion.identity);
+        newSpeedUp.GetComponent<Rigidbody2D>().velocity = -(newSpeedUp.transform.right) * ItemSpeed;
    }
 }

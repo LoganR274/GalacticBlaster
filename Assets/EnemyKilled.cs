@@ -12,21 +12,21 @@ public class EnemyKilled : MonoBehaviour
 
     public myEvent myKillEvent;
 
-    void Start()
-    {
-        onEnemyKilled.AddListener(printPickup);
-        onEnemyKilled.RemoveListener(printPickup);
-    }
+    // void Start()
+    // {
+    //     onEnemyKilled.AddListener(printPickup);
+    //     onEnemyKilled.RemoveListener(printPickup);
+    // }
 
-    void printPickup(){
-        Debug.Log("Enemy spawned!");
-    }
+    // void printPickup(){
+    //     Debug.Log("Enemy spawned!");
+    // }
 
     public UnityEvent onEnemyKilled;
 
     void OnTriggerEnter2D(Collider2D other){
         if(other.GetComponent<bullet>() != null){
-            myKillEvent.Invoke(100);
+            myKillEvent.Invoke(500);
             Destroy(other.gameObject);
         }
     }

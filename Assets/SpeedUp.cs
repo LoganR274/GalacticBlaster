@@ -9,7 +9,6 @@ public class SpeedUp : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other){
         if(other.GetComponent<blaster>() != null){
             powerUp.Apply(other.gameObject);
-            
             Destroy(this.gameObject);
         }
     }

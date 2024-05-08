@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class backToMenu : MonoBehaviour
+public class Result1Handler : MonoBehaviour
 {
-
     // Start is called before the first frame update
-    public void gameOver(){
-        SceneManager.LoadScene("menu");
+    [SerializeField] string toResultScreenName;
+    public void toResultScreen(){
+        SceneManager.LoadScene(toResultScreenName);
     }
 }

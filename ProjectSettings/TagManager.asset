@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Destructable
+  - Blaster
+  - Deadzone
   layers:
   - Default
   - TransparentFX

@@ -18,7 +18,7 @@ public class menuHandler : MonoBehaviour
     }
 
     public void play(){
-        SceneManager.LoadScene("game");
+        SceneManager.LoadScene("Level1");
     }
 
     public void quit(){

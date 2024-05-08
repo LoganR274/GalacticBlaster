@@ -8,11 +8,10 @@ public class BlasterMovement : MonoBehaviour
     [Header("character")]
     [SerializeField] blaster blasterInput;
 
-
     [SerializeField] public GameObject ProjectilePrefab;
     [SerializeField] float speed = 25f;
     [SerializeField] float speedIncrease = 5f;
-    [SerializeField] float projectileTime = 0.5f;
+    [SerializeField] float projectileTime = 0.1f;
 
     public static BlasterMovement singleton;
 
@@ -52,10 +51,13 @@ public class BlasterMovement : MonoBehaviour
         }
 
         if(Input.GetKeyDown(KeyCode.Space)){
-            shootProjectile();
+            
             if(isFirerate == true){
-            shootProjectile1();
+            DoubleFirerate();
             //Debug.Log("isActive is true!");
+            }
+            else{
+            shootProjectile();
             }
         }
 
@@ -63,14 +65,21 @@ public class BlasterMovement : MonoBehaviour
     }
 
     public void shootProjectile(){
+        GetComponent<AudioSource>().Play();
         GameObject newProjectile = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
         newProjectile.GetComponent<Rigidbody2D>().velocity = newProjectile.transform.right * speed;
         Destroy(newProjectile, projectileTime);
     }
-    public void shootProjectile1(){
-        GameObject newProjectile = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
-        newProjectile.GetComponent<Rigidbody2D>().velocity = newProjectile.transform.up * speed;
-        Destroy(newProjectile, projectileTime);
+    public void DoubleFirerate(){
+        GetComponent<AudioSource>().Play();
+        GameObject newProjectile1 = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
+        GameObject newProjectile2 = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
+        newProjectile1.GetComponent<Rigidbody2D>().velocity = newProjectile1.transform.right * speed;
+        newProjectile2.GetComponent<Rigidbody2D>().velocity = newProjectile2.transform.right * speed;
+        newProjectile1.transform.position = newProjectile1.transform.position + new Vector3(0,0.6f,0);
+        newProjectile2.transform.position = newProjectile2.transform.position + new Vector3(0,-0.6f,0);
+        Destroy(newProjectile1, projectileTime);
+        Destroy(newProjectile2, projectileTime);
     }
 
     public void ActivateDoubleFirerate(){

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-    //  [SerializeField] private GameObject enemyPrefab;
+    public enemySpawner spawnEnemy;
 
     // public static PressurePlate singleton;
 
@@ -16,11 +16,14 @@ public class PressurePlate : MonoBehaviour
     //     singleton =  this;
     // }
 
+    //GameObject spawn = enemySpawner;
+
     void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.name == "Blaster"){
         Debug.Log("Pressure plate triggered!");
-        //other.GetComponent<enemy>().callSpawn();
         Destroy(this.gameObject);
+        spawnEnemy.enemySpawn();
+        //spawnEnemy.projectileSpawn();
         }
     }
 }

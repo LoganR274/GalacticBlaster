@@ -6,8 +6,10 @@ public class bullet : MonoBehaviour
 {
     void OnTriggerEnter2D (Collider2D other){
         if (other.gameObject.tag == "Destructable"){
-                Debug.Log("Enemy Killed!");
+                //Debug.Log("Enemy Killed!");
                 EnemyScoreCounter.singleton.ScoreCounter();
+                DropProbability.singleton.probability();
+                //Destroy(this.gameObject);
                 Destroy(other.gameObject);
         }
     }

@@ -20,4 +20,8 @@ public class SpeedCounter : MonoBehaviour
         speedIndicator += 1;
         speedCounterText.text = speedIndicator.ToString();
     }
+
+    public void speedMax(){
+        speedCounterText.text = "Max";
+    }
 }
